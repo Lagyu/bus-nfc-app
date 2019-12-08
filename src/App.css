@@ -36,3 +36,28 @@
     transform: rotate(360deg);
   }
 }
+
+.nfc {
+  height: 100vh;
+  width: 100vw;
+  background-color: #21252b;
+  color: #abb2bf;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.nfc div {
+  padding: 8px 16px;
+}
+
+button {
+  margin: 16px;
+  border: none;
+  border-radius: 3px;
+  padding: 8px 12px;
+  background-color: #61afef;
+  color: #21252b;
+  cursor: pointer;
+}
