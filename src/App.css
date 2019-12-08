@@ -52,12 +52,22 @@
   padding: 8px 16px;
 }
 
-button {
+.button-primary {
   margin: 16px;
   border: none;
-  border-radius: 3px;
-  padding: 8px 12px;
+  border-radius: 4px;
+  padding: 12px 18px;
   background-color: #61afef;
   color: #21252b;
+  cursor: pointer;
+}
+
+.button-secondary {
+  margin: 16px;
+  border: none;
+  border-radius: 4px;
+  padding: 12px 18px;
+  background-color: rgb(108, 117, 125);
+  color: rgb(255, 255, 255);
   cursor: pointer;
 }

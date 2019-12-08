@@ -77,11 +77,11 @@ const App: React.FC = () => {
         }
         ).then((response) => {
           if (response.status === 201){
-            setSentMessage("送信成功: " + id　+ "\n3秒後に戻ります")
+            setSentMessage("送信成功:\n\n" + JSON.stringify(response.data)　+ "\n5秒後に読み取り可能状態に戻ります。")
           }　else {
-            setSentMessage("送信失敗: " + id　+ "\n3秒後に戻ります")
+            setSentMessage("送信失敗:\n\n" + JSON.stringify(response.data)　+ "\n5秒後に読み取り可能状態に戻ります。")
           }
-          setTimeout(initializeNfc, 3000);
+          setTimeout(initializeNfc, 5000);
     }
     )
   }
@@ -89,28 +89,26 @@ const App: React.FC = () => {
   return (
       <div className="nfc">
         {step === "initializing" ? (
-            <div>Initializing...</div>
+            <div>初期化中...</div>
         ) : step === "noNfc" ? (
             <div>
-              The device you are using doesn't appear to have NFC; or, the
-              PhoneGap-NFC plugin hasn't been set up correctly.
+              デバイスがNFCをサポートしていないか、PhoneGap-NFCプラグインが正しくセットアップされていません。
             </div>
         ) : step === "nfcNotEnabled" ? (
             <div>
               <div>
-                NFC is not enabled on your device. Click the button bellow to open
-                your device's settings, then activate NFC.
+                NFCがオフになっています。<br />下のボタンから設定を変更してください.
               </div>
-              <button onClick={onGoToSettingsClick}>Go to NFC Settings</button>
+              <button className='button-primary' onClick={onGoToSettingsClick}>NFCの設定へ</button>
             </div>
         ) : step === "waitingForNfcEnabled" ? (
             <div>
-              <div>Please click the button below once you have enabled NFC.</div>
-              <button onClick={initializeNfc}>Initialize NFC Reader</button>
+              <div>設定変更が完了したら、下のボタンを押してください</div>
+              <button className='button-primary' onClick={initializeNfc}>NFCリーダーを起動する</button>
             </div>
         ) : step === "waitingForTag" ? (
             <div>
-              <div>NFCを待機中...
+              <div>NFCをタッチしてください...
               </div>
             </div>
         ) : step === "tagRead" ? (
@@ -118,17 +116,14 @@ const App: React.FC = () => {
               <div>読み取り成功！</div>
               <div>ID: {tagContent}</div>
               <div>
-                <button onClick={onStopClick}>Stop NFC Reader</button>
-              </div>
-              <div>
-                <button　onClick={initializeNfc}>
-                  読み取り再開
-                </button>
-                <button onClick={() => sendId(tagContent)}>
+                <button className='button-primary' onClick={() => sendId(tagContent)}>
                   送信
                 </button>
+                <button className='button-secondary' onClick={initializeNfc}>
+                  読み取り再開
+                </button>
                 <div style={{whiteSpace: 'pre-line'}}>
-                  {sentMessage}
+                  送信の状態：{sentMessage}
                 </div>
               </div>
             </div>

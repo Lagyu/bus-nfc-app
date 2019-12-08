@@ -1,6 +1,6 @@
 {
-  "appId": "com.example.app",
-  "appName": "App",
+  "appId": "com.iot.dojo.bus.app",
+  "appName": "バス乗車リーダ",
   "bundledWebRuntime": false,
   "npmClient": "yarn",
   "webDir": "build",
