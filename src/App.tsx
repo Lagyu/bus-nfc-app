@@ -77,9 +77,9 @@ const App: React.FC = () => {
         }
         ).then((response) => {
           if (response.status === 201){
-            setSentMessage("送信成功:\n\n" + JSON.stringify(response.data)　+ "\n5秒後に読み取り可能状態に戻ります。")
+            setSentMessage("送信成功！\nレスポンス: \n" + JSON.stringify(response.data, null, 2)　+ "\n5秒後に読み取り可能状態に戻ります。")
           }　else {
-            setSentMessage("送信失敗:\n\n" + JSON.stringify(response.data)　+ "\n5秒後に読み取り可能状態に戻ります。")
+            setSentMessage("送信失敗...\nレスポンス: \n" + JSON.stringify(response.data, null, 2)　+ "\n5秒後に読み取り可能状態に戻ります。")
           }
           setTimeout(initializeNfc, 5000);
     }
