@@ -115,8 +115,8 @@ const App: React.FC = () => {
             </div>
         ) : step === "tagRead" ? (
             <div>
-              <div>Tag scanned! Here it's content:</div>
-              <div>{tagContent}</div>
+              <div>読み取り成功！</div>
+              <div>ID: {tagContent}</div>
               <div>
                 <button onClick={onStopClick}>Stop NFC Reader</button>
               </div>
